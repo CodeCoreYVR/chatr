@@ -9,4 +9,9 @@ class MessagesController < ApplicationController
     head :created
   end
 
+  def destroy
+    Message.find(params[:id]).destroy!
+    head :ok
+  end
+
 end

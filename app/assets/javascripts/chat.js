@@ -28,6 +28,20 @@ $(document).ready(function(){
     $("textarea").focus();
   });
 
+  $("ul").on("click", "li i", function(){
+    var id = $(this).parent().data("id"); // attr("data-id");
+    // var $li = $(this).parent();
+    $.ajax({
+      method: "DELETE",
+      url: "/messages/" + id,
+      success: function(){
+        $(this).parent().fadeOut();
+      }.bind(this)
+    });
+  });
+
+  setInterval(loadMessages, 2000);
+
   loadMessages();
 
 });
